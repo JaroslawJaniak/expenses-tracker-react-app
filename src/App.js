@@ -31,7 +31,7 @@ function App() {
   ];
 
   const addExpenseHandler = (expense) => {
-    console.log("App.js:");
+    console.log("---App.js:");
     console.log(expense);
   };
 
@@ -40,7 +40,7 @@ function App() {
       <header className="App-header">
         <h1>Expenses Tracker</h1>
       </header>
-      <NewExpense />
+      <NewExpense onAddNewExpenseData={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
