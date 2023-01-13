@@ -10,7 +10,7 @@ const NewExpense = (props) => {
       id: Math.random().toString(),
     };
 
-    console.log("---NewExpense.js");
+    console.log("---NewExpense.js -> saveExpenseDateHandler()");
     console.log(expenseData);
 
     props.onAddNewExpenseData(expenseData);
