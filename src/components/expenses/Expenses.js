@@ -9,7 +9,7 @@ function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2019");
 
   const filterChangeSelectHandler = (selectedYear) => {
-    console.log("---Expenses.js  -> selectedYearHandler():");
+    console.log("---Expenses.js  -> filterChangeSelectHandler():");
     console.log(selectedYear);
     setFilteredYear(selectedYear);
   };
@@ -20,6 +20,19 @@ function Expenses(props) {
         setDefaultYear={filteredYear}
         onSelect={filterChangeSelectHandler}
       />
+
+      {props.items.map((expense) => (
+        <ExpenseItem
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
+
+      {
+        //hard-coded
+      }
+      <label>hard-coded part - 'Expenes.js':</label>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
