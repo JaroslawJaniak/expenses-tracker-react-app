@@ -6,17 +6,17 @@ import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
 
 function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState("2019");
+  const [selectedYear, setYear] = useState("2019");
 
   const filterChangeSelectHandler = (selectedYear) => {
     console.log("---Expenses.js  -> filterChangeSelectHandler():");
     console.log(selectedYear);
-    setFilteredYear(selectedYear);
-
-    const newArrayFilteredByYear = props.items.filter(
-      (expense) => expense.date.getFullYear() == selectedYear
-    );
+    setYear(selectedYear);
   };
+
+  const filteredExpenses = props.items.filter(
+    (expense) => expense.date.getFullYear().toString() === selectedYear
+  );
 
   const listExpensesItems = props.items.map((expense) => (
     <ExpenseItem
@@ -27,16 +27,28 @@ function Expenses(props) {
     />
   ));
 
+  let expensesContent = <p>No expenses found.</p>;
+
+  if (filteredExpenses.lenght > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
+
   return (
     <Card className="expenses">
       <ExpensesFilter
-        setDefaultYear={filteredYear}
+        setDefaultYear={selectedYear}
         onSelect={filterChangeSelectHandler}
       />
-
-      {props.items
-        .filter((expense) => expense.date.getFullYear() == filteredYear)
-        .map((expense) => (
+      {filteredExpenses.length === 0 && <p>No expenses found.</p>}
+      {filteredExpenses.length > 0 &&
+        filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
@@ -44,17 +56,35 @@ function Expenses(props) {
             date={expense.date}
           />
         ))}
-      {
-        //hard-coded
-      }
-      <label>hard-coded part - 'Expenes.js':</label>
-      <ExpenseItem
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-        date={props.items[0].date}
-      />
     </Card>
   );
 }
 
 export default Expenses;
+
+/*
+{filteredExpenses.length === 0 && <p>No expenses found.</p>}
+      {filteredExpenses.length > 0 &&
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+
+
+{filteredExpenses.length === 0 ? (
+        <p>No expenses found.</p>
+      ) : (
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))
+      )}
+*/
