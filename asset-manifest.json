@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/expenses-tracker-react-app/static/css/main.27374395.css",
-    "main.js": "/expenses-tracker-react-app/static/js/main.79760b1b.js",
+    "main.css": "/expenses-tracker-react-app/static/css/main.66354dde.css",
+    "main.js": "/expenses-tracker-react-app/static/js/main.3d99bcdc.js",
     "static/js/787.683212e2.chunk.js": "/expenses-tracker-react-app/static/js/787.683212e2.chunk.js",
     "index.html": "/expenses-tracker-react-app/index.html",
-    "main.27374395.css.map": "/expenses-tracker-react-app/static/css/main.27374395.css.map",
-    "main.79760b1b.js.map": "/expenses-tracker-react-app/static/js/main.79760b1b.js.map",
+    "main.66354dde.css.map": "/expenses-tracker-react-app/static/css/main.66354dde.css.map",
+    "main.3d99bcdc.js.map": "/expenses-tracker-react-app/static/js/main.3d99bcdc.js.map",
     "787.683212e2.chunk.js.map": "/expenses-tracker-react-app/static/js/787.683212e2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.27374395.css",
-    "static/js/main.79760b1b.js"
+    "static/css/main.66354dde.css",
+    "static/js/main.3d99bcdc.js"
   ]
 }
