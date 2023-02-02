@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+  const [addNewExpenseState, setAddNewExpenseState] = useState(false);
+
+  const addNewExpenseHandler = () => {
+    console.log("click!");
+    setAddNewExpenseState(true);
+  };
+
   const saveExpenseDateHandler = (enteredExpenseData) => {
     const expenseData = {
       id: Math.random().toString(),
@@ -16,11 +23,24 @@ const NewExpense = (props) => {
     props.onAddNewExpenseData(expenseData);
   };
 
-  return (
-    <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDateHandler} />
-    </div>
+  const cancelExpenseForm = (buttonState) => {
+    setAddNewExpenseState(false);
+  };
+
+  let defaultExpenseFormUI = (
+    <button onClick={addNewExpenseHandler}>Add New Expense</button>
   );
+
+  if (addNewExpenseState === true) {
+    defaultExpenseFormUI = (
+      <ExpenseForm
+        onSaveExpenseData={saveExpenseDateHandler}
+        onCancelExpenseForm={cancelExpenseForm}
+      />
+    );
+  }
+
+  return <div className="new-expense">{defaultExpenseFormUI}</div>;
 };
 
 export default NewExpense;
