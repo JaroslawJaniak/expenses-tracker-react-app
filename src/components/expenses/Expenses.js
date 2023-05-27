@@ -7,7 +7,7 @@ import ExpensesList from "./ExpensesList";
 import Card from "../UI/Card";
 
 function Expenses(props) {
-  const [selectedYear, setYear] = useState("2019");
+  const [selectedYear, setYear] = useState("2023");
 
   const filterChangeSelectHandler = (selectedYear) => {
     console.log("---Expenses.js  -> filterChangeSelectHandler():");
@@ -37,13 +37,19 @@ function Expenses(props) {
     />
   ));
 
+  let defaultView = <ExpensesList items={filteredExpenses} />;
+
+  if (selectedYear === "all") defaultView = expensesListItems;
+
+  console.log(expensesListItems);
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         setDefaultYear={selectedYear}
         onSelect={filterChangeSelectHandler}
       />
-      <ExpensesList items={filteredExpenses} />
+      {defaultView}
     </Card>
   );
 }

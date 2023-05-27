@@ -1,3 +1,7 @@
+ul {
+  list-style: none;
+}
+
 .expense-item {
   display: flex;
   justify-content: space-between;
